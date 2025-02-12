@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Encabezado from "./componentes/Encabezado";
-import { UserProvider } from "./contextos/usuario";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Gestión cuotas",
-  description: "Gestión cuotas",
+  title: "Cotizador Agro",
+  description: "Cotizador Agro | Cotizaciones automatizadas para toma de decisiones",
 };
 
 export default function RootLayout({
@@ -29,12 +27,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <UserProvider>
-          <div className="min-h-screen flex flex-col">
-            <Encabezado />
-            <main className="flex-1">{children}</main>
-          </div>
-        </UserProvider>
+        {children}
       </body>
     </html>
   );
