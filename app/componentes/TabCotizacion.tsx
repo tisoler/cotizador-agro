@@ -1,6 +1,6 @@
 import { Cotizacion } from "../modelos/cotizacion";
 
-const TabCotizacion = ({ cotizaciones }: { cotizaciones: Cotizacion[] }) => {
+const TabCotizacion = ({ fecha, cotizaciones }: { fecha: string, cotizaciones: Cotizacion[] }) => {
   const groupedByTipoCompra = cotizaciones.reduce((acc, curr) => {
     if (!acc[curr.tipo_compra]) {
       acc[curr.tipo_compra] = {
@@ -24,7 +24,7 @@ const TabCotizacion = ({ cotizaciones }: { cotizaciones: Cotizacion[] }) => {
       <table className="min-w-full bg-white text-black">
         <thead>
           <tr>
-            <th className="py-2 px-4 border border-neutral-600">Compras y DJVE AL</th>
+            <th className="py-2 px-4 border border-neutral-600">Compras y DJVE AL {fecha}</th>
             <th className="py-2 px-4 border border-neutral-600">Cosecha</th>
             <th className="py-2 px-4 border border-neutral-600">Total Semanal</th>
             <th className="py-2 px-4 border border-neutral-600">Total comprado</th>
