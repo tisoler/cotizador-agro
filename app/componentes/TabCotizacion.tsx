@@ -1,3 +1,4 @@
+import * as XLSX from 'xlsx';
 import { Cotizacion } from "../modelos/cotizacion";
 
 const TabCotizacion = ({ fecha, cotizaciones }: { fecha: string, cotizaciones: Cotizacion[] }) => {
@@ -19,9 +20,17 @@ const TabCotizacion = ({ fecha, cotizaciones }: { fecha: string, cotizaciones: C
     return acc;
   }, {} as Record<string, { contador: number, cosechas: Record<string, number> }>);
 
+  const exportarAExcel = async () => {
+    const table = document.getElementById('tabla-cotizacion');
+    const worksheet = XLSX.utils.table_to_sheet(table);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Cotizaciones');
+    XLSX.writeFile(workbook, 'cotizaciones.xlsx');
+  };
+
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full bg-white text-black">
+      <table id='tabla-cotizacion' className="min-w-full bg-white text-black">
         <thead>
           <tr>
             <th className="py-2 px-4 border border-neutral-600">Compras y DJVE AL {fecha}</th>
@@ -65,6 +74,12 @@ const TabCotizacion = ({ fecha, cotizaciones }: { fecha: string, cotizaciones: C
           ))}
         </tbody>
       </table>
+      <button
+          className="w-full mt-2 px-4 py-3 cursor-pointer font-bold bg-green-500 text-white rounded hover:bg-white hover:text-green-700 active:bg-green-900 active:text-white"
+          onClick={exportarAExcel}
+        >
+          Exportar
+      </button>
     </div>
   );
 };
