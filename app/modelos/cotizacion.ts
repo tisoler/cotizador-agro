@@ -6,7 +6,7 @@ export class Cotizacion extends Model<
   InferCreationAttributes<Cotizacion>
 > {
   declare id: CreationOptional<number>;
-  declare fecha: Date;
+  declare fecha: string;
   declare tipo_grano: string;
   declare tipo_compra: string;
   declare cosecha: string;

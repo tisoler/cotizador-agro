@@ -73,7 +73,7 @@ export default function Magyp() {
       {activeGranoTab && (
         <TabCotizacion
           fecha={activeFechaTab}
-          cotizaciones={cotizaciones?.filter(c => c.tipo_grano === activeGranoTab)}
+          cotizaciones={cotizaciones?.filter(c => c.fecha === activeFechaTab && c.tipo_grano === activeGranoTab)}
         />
       )}
     </div>
