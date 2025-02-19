@@ -41,7 +41,7 @@ export default function Magyp() {
     <div>
       <div className="flex flex-col">
         <div className='flex gap-1'>
-          {Object.keys(uniqueFechasGranosRef.current)?.map((fecha) => (
+          {Object.keys(uniqueFechasGranosRef.current)?.sort()?.map(fecha => (
             <button
               key={fecha}
               className={`px-4 py-2 ${
